@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif; /* Applied your imported Google Font */
+}
+
+/* Plain CSS fallback that works with any version of Tailwind */
+.bg-custom-gradient {
+    /* https://hypercolor.dev/*/
+  background-image: linear-gradient(to top, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));
+}
+
+
+.addRoom {
+    display: flex;
+    flex-direction: column;
+}
