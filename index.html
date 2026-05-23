@@ -13,11 +13,22 @@
   <header class="text-slate-300 body-font glass-panel sticky top-0 z-50">
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
       <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0" href="./index.html">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-          stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/30"
-          viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-10 h-10 p-1.5 bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-800 rounded-xl shadow-xl shadow-indigo-500/20 ring-1 ring-white/20 transition-all duration-300 hover:scale-105">
+  <path opacity="0.2" stroke="url(#logoGlow)" stroke-width="1" stroke-dasharray="2 2" d="M4 12h16M12 4v16" />
+  
+  <path stroke="url(#logoGlow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 5v14M18 5v14M6 12h12M12 7v10" />
+  
+  <circle cx="12" cy="7" r="1.5" fill="#38bdf8" class="animate-pulse" />
+  <circle cx="12" cy="17" r="1.5" fill="#38bdf8" />
+  
+  <defs>
+    <linearGradient id="logoGlow" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#a5b4fc" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+  </defs>
+</svg>
         <span class="ml-3 text-xl tracking-wide">Hostel Room Allocation System</span>
       </a>
       <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
@@ -169,7 +180,7 @@
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                 </div>
                 <div>
-                  <p class="text-white">Rajesh removed from <span class="font-bold text-emerald-400">Room 101</span></p>
+                  <p class="text-white">Sindu removed from <span class="font-bold text-emerald-400">Room 101</span></p>
                   <p class="text-xs text-slate-500 mt-1">Yesterday</p>
                 </div>
               </div>
@@ -199,52 +210,148 @@
     </div>
   </section>
 
+  <!--Footer-->
   <footer class="text-slate-300 body-font glass-panel mt-12 border-t border-white/10">
     <div class="container px-5 py-24 mx-auto">
       <div class="flex flex-wrap md:text-left text-center order-first">
         <div class="lg:w-1/4 md:w-1/2 w-full px-4">
           <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">MANAGEMENT</h2>
           <nav class="list-none mb-10">
-            <li><a class="text-slate-400 hover:text-white transition-colors" href="./product.html">Rooms</a></li>
-            <li><a class="text-slate-400 hover:text-white transition-colors" href="#">Students</a></li>
-            <li><a class="text-slate-400 hover:text-white transition-colors" href="#">Allocations</a></li>
-            <li><a class="text-slate-400 hover:text-white transition-colors" href="#">Maintenance</a></li>
+            <li>
+              <a class="text-slate-400 hover:text-white transition-colors" href="./product.html">Rooms</a>
+            </li>
+            <li>
+              <a class="text-slate-400 hover:text-white transition-colors" href="#">Students</a>
+            </li>
+            <li>
+              <a class="text-slate-400 hover:text-white transition-colors" href="#">Allocations</a>
+            </li>
+            <li>
+              <a class="text-slate-400 hover:text-white transition-colors" href="#">Maintenance</a>
+            </li>
           </nav>
         </div>
         <div class="lg:w-1/4 md:w-1/2 w-full px-4">
           <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">REPORTS</h2>
           <nav class="list-none mb-10">
-            <li><a class="text-slate-400 hover:text-white transition-colors" href="#">Occupancy Report</a></li>
-            <li><a class="text-slate-400 hover:text-white transition-colors" href="#">Fee Defaulters</a></li>
-            <li><a class="text-slate-400 hover:text-white transition-colors" href="#">Room History</a></li>
-            <li><a class="text-slate-400 hover:text-white transition-colors" href="#">Suggestions</a></li>
+            <li>
+              <a class="text-slate-400 hover:text-white transition-colors" href="#">Occupancy Report</a>
+            </li>
+            <li>
+              <a class="text-slate-400 hover:text-white transition-colors" href="#">Fee Defaulters</a>
+            </li>
+            <li>
+              <a class="text-slate-400 hover:text-white transition-colors" href="#">Room History</a>
+            </li>
+            <li>
+              <a class="text-slate-400 hover:text-white transition-colors" href="#">Suggestions</a>
+            </li>
           </nav>
         </div>
         <div class="lg:w-1/4 md:w-1/2 w-full px-4">
           <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">QUICK LINKS</h2>
           <nav class="list-none mb-10">
-            <li><a class="text-slate-400 hover:text-white transition-colors" href="./index.html">Dashboard (Home)</a></li>
-            <li><a class="text-slate-400 hover:text-white transition-colors" href="./product.html">Add Room</a></li>
-            <li><a class="text-slate-400 hover:text-white transition-colors" href="./contact.html">Support</a></li>
-            <li><a class="text-slate-400 hover:text-white transition-colors" href="#">System Settings</a></li>
+            <li>
+              <a class="text-slate-400 hover:text-white transition-colors" href="./index.html">Dashboard (Home)</a>
+            </li>
+            <li>
+              <a class="text-slate-400 hover:text-white transition-colors" href="./product.html">Add Room</a>
+            </li>
+            <li>
+              <a class="text-slate-400 hover:text-white transition-colors" href="./contact.html">Support</a>
+            </li>
+            <li>
+              <a class="text-slate-400 hover:text-white transition-colors" href="#">System Settings</a>
+            </li>
           </nav>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">ANNOUNCEMENTS</h2>
+          <div
+            class="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start">
+            <div class="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
+              <label for="footer-field" class="leading-7 text-sm text-slate-400">Email Address</label>
+              <input type="text" id="footer-field" name="footer-field"
+                class="w-full bg-slate-800/50 rounded border border-slate-600 focus:bg-slate-700/50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-base outline-none text-white placeholder-slate-400 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <button
+              class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-600 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-500 rounded transition-colors shadow-md">Subscribe</button>
+          </div>
+          <p class="text-slate-400 text-sm mt-2 md:text-left text-center">Dedicated to streamlining hostel management
+            <br class="lg:block hidden">for wardens and administrators.
+          </p>
         </div>
       </div>
     </div>
     <div class="bg-slate-900/50">
       <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
         <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-600 rounded-full" viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-10 h-10 p-1.5 bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-800 rounded-xl shadow-xl shadow-indigo-500/20 ring-1 ring-white/20 transition-all duration-300 hover:scale-105">
+  <path opacity="0.2" stroke="url(#logoGlow)" stroke-width="1" stroke-dasharray="2 2" d="M4 12h16M12 4v16" />
+  
+  <path stroke="url(#logoGlow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 5v14M18 5v14M6 12h12M12 7v10" />
+  
+  <circle cx="12" cy="7" r="1.5" fill="#38bdf8" class="animate-pulse" />
+  <circle cx="12" cy="17" r="1.5" fill="#38bdf8" />
+  
+  <defs>
+    <linearGradient id="logoGlow" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#a5b4fc" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+  </defs>
+</svg>
           <span class="ml-3 text-xl tracking-wide">Hostel Room Allocation System</span>
         </a>
         <p class="text-sm text-slate-400 sm:ml-6 sm:mt-0 mt-4">© 2024 Hostel Room Allocation System —
-          <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-slate-300 hover:text-white transition-colors ml-1" target="_blank">@hostelrooms</a>
+          <a href="https://twitter.com/knyttneve" rel="noopener noreferrer"
+            class="text-slate-300 hover:text-white transition-colors ml-1" target="_blank">@hostelrooms</a>
         </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+          <a class="text-slate-400 hover:text-white transition-colors cursor-pointer">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+              viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-slate-400 hover:text-white transition-colors cursor-pointer">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+              viewBox="0 0 24 24">
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+              </path>
+            </svg>
+          </a>
+          <a class="ml-3 text-slate-400 hover:text-white transition-colors cursor-pointer">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-5 h-5" viewBox="0 0 24 24">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-slate-400 hover:text-white transition-colors cursor-pointer">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+              <path stroke="none"
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
       </div>
     </div>
   </footer>
+
+  <!-- Live Chat Widget -->
+  <button
+    class="fixed bottom-8 right-8 bg-indigo-600 hover:bg-indigo-500 text-white p-4 rounded-full shadow-2xl transition-transform hover:scale-110 z-50 flex items-center justify-center">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+      </path>
+    </svg>
+  </button>
 
   <script src="./index.js"></script>
 </body>
