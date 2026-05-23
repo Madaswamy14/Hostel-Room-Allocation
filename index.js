@@ -1,5 +1,3 @@
-// 🏠 DASHBOARD HOME CONTROLLER SCRIPT
-
 // Total room metrics are kept locked onto a constant maximum baseline boundary count
 // No matter how many individual list card nodes are loaded on secondary screens, this displays 20
 document.getElementById("dashTotal").textContent = "20";

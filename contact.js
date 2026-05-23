@@ -1,4 +1,3 @@
-// 📑 REGISTRATION FORM ELEMENTS & INPUT ANCHOR BINDINGS
 const name = document.getElementById("name");
 const email = document.getElementById("email");
 const phoneNumber = document.getElementById("phoneNumber");
@@ -7,7 +6,6 @@ const urgency = document.getElementById("urgency");
 const message = document.getElementById("message");
 const submit = document.getElementById("submitbtn");
 
-// 🔍 REGEX VALIDATION LOGIC RULES
 // 1. Name: Must contain letters only, spaces allowed, at least 3 characters long
 const nameRegex = /^[a-zA-Z\s]{3,}$/;
 
@@ -17,16 +15,15 @@ const emailRegex = /^[a-zA-Z0-9+-._]+@[a-zA-Z0-9.-]{2,}\.[a-zA-Z]{2,50}$/;
 // 3. Phone: Must contain exactly 10 numerical digits
 const phoneRegex = /^[0-9]{10}$/;
 
-// 4. Message: Accepts letters, numbers, and core punctuation characters, bounded between 10 and 100 characters
+// 4. Message: Accepts letters, numbers, and punctuation characters, between 10 and 100 characters
 const msgRegex = /^[a-zA-Z0-9\s\.,!?'\n-]{10,100}$/;
 
-// Timer identifier used to throttle error logs so they don't block typing speed
+// Delay Timer used to throttle error logs so they don't block typing speed
 let delayTimer;
 
-// ⚙️ SYSTEM FORM VALIDATION PROCESSING ENGINE ROUTINE
+// FORM VALIDATION PROCESS
 const validateForm = () => {
 
-    // Evaluate input box value variables against logic pattern filters
     const isNameValid = nameRegex.test(name.value);
     const isEmailValid = emailRegex.test(email.value);
     const isPhoneValid = phoneRegex.test(phoneNumber.value);
@@ -34,48 +31,42 @@ const validateForm = () => {
     const isCategoryValid = category.value !== "";
     const isUrgencyValid = urgency.value !== "";
 
-    // Lock/Unlock submit button trigger based on all conditions evaluating to true
     submit.disabled = !(isNameValid && isEmailValid && isPhoneValid && isMsgValid && isCategoryValid && isUrgencyValid);
 
     // Clear previous timing frames to restart our user typing delay scan
     clearTimeout(delayTimer);
 
-    // DELAY ERROR RENDERING (Debounce Rule)
-    // Waits for 1 full second after typing stops before flashing warnings on the interface screen
+    // Waits for 1 second after typing stops and flashs warnings on the interface screen
     delayTimer = setTimeout(() => {
         
-        // Name error visualization toggle rule
         if (!isNameValid && name.value.length > 0) {
             document.getElementById("nameError").style.display = "block";
         } else {
             document.getElementById("nameError").style.display = "none";
         }
 
-        // Email error visualization toggle rule
         if (!isEmailValid && email.value.length > 0) {
             document.getElementById("emailError").style.display = "block";
         } else {
             document.getElementById("emailError").style.display = "none";
         }
 
-        // Phone number error visualization toggle rule
         if (!isPhoneValid && phoneNumber.value.length > 0) {
             document.getElementById("phoneError").style.display = "block";
         } else {
             document.getElementById("phoneError").style.display = "none";
         }
 
-        // Message context error visualization toggle rule
         if (!isMsgValid && message.value.length > 0) {
             document.getElementById("messageError").style.display = "block";
         } else {
             document.getElementById("messageError").style.display = "none";
         }
 
-    }, 1000); // 1000 milliseconds delay window
+    }, 1000);
 };
 
-/* SUBMIT BUTTON EVENT CLICK EVENT LISTENER HANDLER */
+/* SUBMIT BUTTON EVENT */
 submit.addEventListener("click", (event) => {
     event.preventDefault(); // Block native default postback redirections
     alert("Form submitted successfully");

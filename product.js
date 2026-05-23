@@ -1,33 +1,30 @@
-// 🧼 PERSISTENT STORAGE INITIALIZER WIPE OUT
 // This prevents older crashes by wiping out browser memory values completely *once* on a fresh visit
 if (!localStorage.getItem("hasInitialized")) {
   localStorage.clear();
   localStorage.setItem("hasInitialized", "true");
 }
 
-// Global page anchors binding HTML objects to JavaScript memory addresses
 const roomName = document.getElementById("roomName");
 const roomType = document.getElementById("roomType");
 const addbtn = document.getElementById("addbtn");
 const roomContainer = document.getElementById("roomContainer");
 
-// 🔢 DYNAMIC COUNT RECALCULATION FUNCTION UTILITY TOOL
 // Whenever anything is added, edited, or clicked, this loops through the screen cards to fetch fresh metrics
 function recountDashboardStats() {
   const allCards = roomContainer.querySelectorAll("[data-maxroomcapacity]");
 
-  // 🔄 THE SIMPLEST SORT: Rearranges the cards numerically on the fly
+  // Rearranges the cards numerically
   const sortedCards = Array.from(allCards).sort((a, b) => a.querySelector("#roomNumber").textContent - b.querySelector("#roomNumber").textContent);
   roomContainer.innerHTML = "";
   sortedCards.forEach(card => roomContainer.append(card));
   
-  let total = 20; // Boundless layout maximum tracking standard ceiling
+  let total = 20;
   let available = 0;
   let partial = 0;
   let full = 0;
   let currentlyFilled = 0;
 
-  // Run over every card element sitting in the list view
+  // Run on every card element in the list view
   allCards.forEach((card) => {
     const currentStatus = card.querySelector("#status").textContent.trim();
     const occupiedCount = parseInt(card.querySelector("#occupied").textContent || "0");
@@ -36,7 +33,7 @@ function recountDashboardStats() {
     // Add current room occupant integer metrics into total student container
     currentlyFilled = currentlyFilled + occupiedCount;
 
-    // Boundary startup catch: Sets Room 104 button text name to match on initialization
+    // Sets Room 104 button text name to match on initialization
     if (currentStatus === "Maintenance" && maintBtn && maintBtn.textContent.trim() === "Mark Maintenance") {
       maintBtn.textContent = "Maintenance Done";
     }
@@ -70,23 +67,23 @@ function recountDashboardStats() {
 addbtn.addEventListener("click", (event) => {
   event.preventDefault();
 
-  // 🛑 LIMIT GUARD: Directly count physical cards on screen
+  // To count cards on screen
   const currentRoomCount = roomContainer.querySelectorAll("[data-maxroomcapacity]").length;
   if (currentRoomCount >= 20) {
     alert("System Limit Reached: You cannot create more than 20 rooms!");
     return; 
   }
 
-  // 1. Check if the input field is empty
+  // Check if the input field is empty
   if (!roomName.value) return alert("Please enter a room number");
 
-  // 2. 🔢 SIMPLE 3-DIGIT CHECK: Simply check the typed text character length!
+  // Check the typed text character length!
   if (roomName.value.length !== 3) {
     alert("Invalid Room Number: Room number must be exactly 3 digits long (e.g., 105)!");
     return;
   }
 
-  // 3. 👥 DUPLICATE CHECK: Look at all existing cards to see if this number is already used
+  // DUPLICATE CHECK: Look at all existing cards to see if this number is already used
   let isDuplicate = false;
   const existingRoomNumbers = roomContainer.querySelectorAll("#roomNumber");
   
@@ -101,7 +98,6 @@ addbtn.addEventListener("click", (event) => {
     return; // Hard stops execution so a duplicate card isn't built
   }
 
-  // ... rest of your original code below stays exactly the same ...
   const capacities = { single: 1, double: 2, triple: 3 };
   const maxCapacity = capacities[roomType.value] || 1;
 
@@ -126,16 +122,14 @@ addbtn.addEventListener("click", (event) => {
   alert("Room created successfully");
 });
 
-/* DELEGATED BUBBLE CLICK EVENT BINDING EVENT HANDLER */
 // Handles all secondary action buttons sitting on dynamically added individual card layouts
 roomContainer.addEventListener("click", (event) => {
   const roomCard = event.target.closest("[data-maxroomcapacity]");
   if (!roomCard) return; // Exit logic safe processing if the element clicked isn't a room card context element
 
-  /* A. ADD STUDENT INNER COMPONENT LOGIC TRIGGER ACTION */
+  /* ADD STUDENT */
   if (event.target.id === "addStudentbtn") {
     
-    // 🛑 TOTAL SYSTEM ALLOCATION GUARD CEILING GATEWAY
     // Sum up currently allocated student totals to block action if maximum ceiling limit (39) is hit
     let totalAllocatedStudents = 0;
     const allOccupiedSpans = roomContainer.querySelectorAll("#occupied");
@@ -193,16 +187,14 @@ roomContainer.addEventListener("click", (event) => {
     recountDashboardStats(); // Send refreshed total state configurations down to localStorage
   }
 
-  /* B. MAINTENANCE CONTROL INTERACTION BLOCK TRIGGER ACTION */
+  /* MAINTENANCE BUTTON */
   if (event.target.id === "maintenancebtn") {
     const statusSpan = roomCard.querySelector("#status");
     const studentNameDiv = roomCard.querySelector("#studentName");
     const addStudentBtn = roomCard.querySelector("#addStudentbtn");
     const maintBtn = event.target;
 
-    // Use string pattern checking rules to handle visual dimming rules safely
     if (statusSpan.textContent !== "Maintenance") {
-      // GOING INTO MAINTENANCE: Darken visual view parameters and lock allocations
       statusSpan.textContent = "Maintenance";
       statusSpan.className = "text-sm font-semibold text-rose-400";
       studentNameDiv.textContent = "Out of Order";
@@ -215,7 +207,6 @@ roomContainer.addEventListener("click", (event) => {
         addStudentBtn.classList.add("opacity-50", "cursor-not-allowed");
       }
     } else {
-      // RETURNING TO VACANT ACTIVE POOL: Restore standard layout styling features
       statusSpan.textContent = "Available";
       statusSpan.className = "text-sm font-semibold text-emerald-400";
       studentNameDiv.textContent = "No students yet";
@@ -229,18 +220,18 @@ roomContainer.addEventListener("click", (event) => {
       }
     }
     
-    recountDashboardStats(); // Fire a dynamic recount scan
+    recountDashboardStats(); // trigger recount scan
   }
 
-  /* C. REMOVE WHOLE ROOM LAYOUT ACTION CONTROL BUTTON TRIGGER ACTION */
+  /* C. REMOVE BUTTON */
   if (event.target.id === "removebtn") {
     if (confirm("Are you sure you want to remove this room?")) {
-      roomCard.remove(); // Pull structural card object node cleanly off browser rendering engine
-      recountDashboardStats(); // Recount data indexes to verify totals update on home screens
+      roomCard.remove();
+      recountDashboardStats(); // trigger recount scan
     }
   }
 
-  /* D. REMOVE SINGLE INDIVIDUAL STUDENT LINE SELECTION TRIGGER ACTION */
+  /* D. REMOVE SINGLE INDIVIDUAL */
   if (event.target.classList.contains("studentCurrent")) {
     const studentName = event.target.textContent.trim();
 
@@ -249,12 +240,11 @@ roomContainer.addEventListener("click", (event) => {
       const statusSpan = roomCard.querySelector("#status");
       const studentNameDiv = roomCard.querySelector("#studentName");
 
-      event.target.remove(); // Drop the isolated list object selector element node cleanly
+      event.target.remove();
 
-      let current = parseInt(occupiedSpan.textContent) - 1; // Reduce occupancy values mathematically
+      let current = parseInt(occupiedSpan.textContent) - 1;
       occupiedSpan.textContent = current;
 
-      // Swap status text badges dynamically back down based on current data counts
       if (current === 0) {
         studentNameDiv.textContent = "No students yet";
         statusSpan.textContent = "Available";
@@ -264,28 +254,27 @@ roomContainer.addEventListener("click", (event) => {
         statusSpan.className = "text-sm font-semibold text-amber-400";
       }
       
-      recountDashboardStats(); // Sync system dashboard parameters
+      recountDashboardStats(); 
     }
   }
 });
 
-// Run a cleanup baseline numbers scan on system initialization execution routine
 recountDashboardStats();
 
-// 🔍 DYNAMIC TEXT SEARCH HANDLER TOOL LOGIC BLOCK
+// SEARCH FUNCTION
 const roomSearch = document.getElementById("roomSearch");
 
 roomSearch.addEventListener("keyup", (event) => {
   const input = event.target.value.toLowerCase().trim(); // Isolate string character case values
   const allCards = roomContainer.querySelectorAll("[data-maxroomcapacity]");
 
-  // Scan over all physical elements present within container borders
+  // Scans all physical elements present within container borders
   allCards.forEach((card) => {
     const roomNumText = card.querySelector("#roomNumber").textContent.toLowerCase();
     const studentText = card.querySelector("#studentName").textContent.toLowerCase();
     const statusText = card.querySelector("#status").textContent.toLowerCase();
 
-    // Show card structure only if character sets fall in matching index locations
+    // Show card only if character sets fall in matching index locations
     if (roomNumText.includes(input) || studentText.includes(input) || statusText.includes(input)) {
       card.style.display = "flex";
     } else {
@@ -294,7 +283,7 @@ roomSearch.addEventListener("keyup", (event) => {
   });
 });
 
-// 🎛️ DYNAMIC DROPDOWN OPTION STATUS SELECTOR FILTER CONTROL UTILITY
+// FILTER FUNCTION
 const statusFilter = document.getElementById("statusFilter");
 
 statusFilter.addEventListener("change", (event) => {
