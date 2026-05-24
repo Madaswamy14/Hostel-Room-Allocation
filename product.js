@@ -12,33 +12,23 @@ const roomContainer = document.getElementById("roomContainer");
 // Whenever anything is added, edited, or clicked, this loops through the screen cards to fetch fresh metrics
 function recountDashboardStats() {
   const allCards = roomContainer.querySelectorAll("[data-maxroomcapacity]");
-
-  // Rearranges the cards numerically
+  
   const sortedCards = Array.from(allCards).sort((a, b) => a.querySelector("#roomNumber").textContent - b.querySelector("#roomNumber").textContent);
   roomContainer.innerHTML = "";
   sortedCards.forEach(card => roomContainer.append(card));
-  
-  let total = 20;
+
+  let total = 20; 
   let available = 0;
   let partial = 0;
   let full = 0;
   let currentlyFilled = 0;
 
-  // Run on every card element in the list view
   allCards.forEach((card) => {
     const currentStatus = card.querySelector("#status").textContent.trim();
     const occupiedCount = parseInt(card.querySelector("#occupied").textContent || "0");
-    const maintBtn = card.querySelector("#maintenancebtn");
     
-    // Add current room occupant integer metrics into total student container
     currentlyFilled = currentlyFilled + occupiedCount;
 
-    // Sets Room 104 button text name to match on initialization
-    if (currentStatus === "Maintenance" && maintBtn && maintBtn.textContent.trim() === "Mark Maintenance") {
-      maintBtn.textContent = "Maintenance Done";
-    }
-
-    // Step up status category trackers on matching parameters
     if (currentStatus === "Available") {
       available = available + 1;
     } else if (currentStatus === "Partially Occupied") {
